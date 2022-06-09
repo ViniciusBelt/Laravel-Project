@@ -165,19 +165,19 @@
                         @csrf
                         <div class="form-group">
                             <label for="title" style="float: left;">Tipo de Solicitação</label>
-                            <input type="text" class="form-control" id="tipo_solicitacao" name="tipo_solicitacao" placeholder="Tipo de Solicitação">
+                            <input type="text" class="form-control" id="tipo_solicitacao" name="tipo_solicitacao" placeholder="Tipo de Solicitação" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="title" style="float: left;">Cliente</label>
-                            <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Cliente">
+                            <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Cliente" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="title" style="float: left;">Solicitante</label>
-                            <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Solicitante">
+                            <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Solicitante" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="title" style="float: left;">CPF/CNPJ/ID</label>
-                            <input type="text" class="form-control" id="cpf_cnpj_id" name="cpf_cnpj_id" placeholder="CPF/CNPJ/ID">
+                            <input type="text" class="form-control" id="cpf_cnpj_id" name="cpf_cnpj_id" placeholder="CPF/CNPJ/ID" maxlength="14">
                         </div>
                         <div class="form-group">
                             <label for="title" style="float: left;">Data de Vencimento</label>

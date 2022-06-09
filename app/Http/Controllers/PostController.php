@@ -38,34 +38,55 @@ class PostController extends Controller
         ->get();
         $countDoDia = $doDia->count();
 
+        if($countEntrada != 0){
+            $countTotal = 100 / ($countEntrada + $countAndamento + $countMinha + $countAVencer + $countDoDia);
+            $porEntrada = $countEntrada * $countTotal;
+            $porAndamento = $countAndamento * $countTotal;
+            $porMinha = $countMinha * $countTotal;
+            $porVencer = $countAVencer * $countTotal;
+            $porDia = $countDoDia * $countTotal;
 
-        $countTotal = 100 / ($countEntrada + $countAndamento + $countMinha + $countAVencer + $countDoDia);
-        $porEntrada = $countEntrada * $countTotal;
-        $porAndamento = $countAndamento * $countTotal;
-        $porMinha = $countMinha * $countTotal;
-        $porVencer = $countAVencer * $countTotal;
-        $porDia = $countDoDia * $countTotal;
-
-
-
-
-        return view('admin.posts.index', compact('posts',
-                                                 'andamento',
-                                                 'minha',
-                                                 'aVencer',
-                                                 'doDia',
-                                                 'countEntrada',
-                                                 'countAndamento',
-                                                 'countMinha',
-                                                 'countAVencer',
-                                                 'date',
-                                                 'countDoDia',
-                                                 'porEntrada',
-                                                 'porAndamento',
-                                                 'porMinha',
-                                                 'porVencer',
-                                                 'porDia',
-        ));
+            return view('admin.posts.index', compact('posts',
+                                                    'andamento',
+                                                    'minha',
+                                                    'aVencer',
+                                                    'doDia',
+                                                    'countEntrada',
+                                                    'countAndamento',
+                                                    'countMinha',
+                                                    'countAVencer',
+                                                    'date',
+                                                    'countDoDia',
+                                                    'porEntrada',
+                                                    'porAndamento',
+                                                    'porMinha',
+                                                    'porVencer',
+                                                    'porDia',
+            ));
+        }else{
+            $porEntrada = 0;
+            $porAndamento = 0;
+            $porMinha = 0;
+            $porVencer = 0;
+            $porDia = 0;
+            return view('admin.posts.index', compact('posts',
+                                                    'andamento',
+                                                    'minha',
+                                                    'aVencer',
+                                                    'doDia',
+                                                    'countEntrada',
+                                                    'countAndamento',
+                                                    'countMinha',
+                                                    'countAVencer',
+                                                    'date',
+                                                    'countDoDia',
+                                                    'porEntrada',
+                                                    'porAndamento',
+                                                    'porMinha',
+                                                    'porVencer',
+                                                    'porDia',
+            ));
+        }
     }
 
     public function salvar(Request $request){
