@@ -24,7 +24,7 @@
                                 <span class="fa fa-user-o"></span>
                             </div>
                             <h3 class="text-center mb-4">Registrar</h3>
-                            <form action="#" class="login-form" id="register-form">
+                            <form action="{{route('registrando')}}" class="login-form" id="register-form">
                                 <div class="form-group">
                                     <input type="text" class="form-control rounded-left" id="user" placeholder="Usuario" maxlength="20" required>
                                 </div>

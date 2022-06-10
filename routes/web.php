@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\{
-    PostController
+    PostController,
+    CreateUserController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -11,9 +12,11 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::get('/registar', function () {
+Route::get('/registrar', function () {
     return view('registrar');
 })->name('registrar');
+
+Route::get('/registrando', 'App\Http\Controllers\CreateUserController@criarUsuario')->name('registrando');
 
 Route::post('/', [PostController::class, 'salvar']);
 
