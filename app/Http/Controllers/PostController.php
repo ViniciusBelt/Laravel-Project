@@ -2,37 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etapas;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function index(){
         $date = date('Y-m-d');
 
-        $posts = Post::all()->sortByDesc('id');
+        $posts = Post::with('etapa')->get()->sortByDesc('id');
         $countEntrada = Post::count();
 
 
-        $andamento = Post::where('etapa', 'LIKE', "%Em%")
+        $andamento = Post::with('etapa')->where('id_etapa', '=', '1')
+        ->orWhere('id_etapa', '=', '2')
         ->orderBy('id', 'DESC')
         ->get();
         $countAndamento = $andamento->count();
 
 
-        $minha = Post::where('solicitante', 'LIKE', "%Beltran%")
+        $minha = Post::with('etapa')->where('solicitante', 'LIKE', "%Beltran%")
         ->orderBy('id', 'DESC')
         ->get();
         $countMinha = $minha->count();
 
 
-        $aVencer = Post::where('data_aprovacao', '<=', "$date")
+        $aVencer = Post::with('etapa')->where('data_aprovacao', '<=', "$date")
         ->orderBy('id', 'DESC')
         ->get();
         $countAVencer = $aVencer->count();
 
-        $doDia = Post::where('data_solicitacao', '=', "$date")
+        $doDia = Post::with('etapa')->where('data_solicitacao', '=', "$date")
         ->orderBy('id', 'DESC')
         ->get();
         $countDoDia = $doDia->count();
@@ -95,8 +96,8 @@ class PostController extends Controller
         $event->cliente          = $request->cliente;
         $event->solicitante      = $request->solicitante;
         $event->cpf_cnpj_id      = $request->cpf_cnpj_id;
-        $event->data_aprovacao    = $request->data_aprovacao;        
-        $event->etapa            = $request->etapa;
+        $event->data_aprovacao   = $request->data_aprovacao;        
+        $event->id_etapa         = $request->id_etapa;
         $event->data_solicitacao = $request->data_solicitacao;
 
         $event->save();
@@ -111,8 +112,9 @@ class PostController extends Controller
     public function edit($id){
 
         $event = Post::findOrFail($id);
+        $etapas = Etapas::all();
 
-        return view('admin.posts.edit', ['event' => $event]);
+        return view('admin.posts.edit', ['event' => $event], compact('etapas'));
     }
 
     public function update(Request $request){

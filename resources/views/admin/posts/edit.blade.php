@@ -15,12 +15,10 @@
     </div>
     <div class="form-group">
         <label for="title" style="float: left;">Etapa</label><br>
-        <select name="etapa" id="etapa" class="form-control">
-            <option value="Em Andamento">Em Andamento</option>
-            <option value="Em Analise">Em Analise</option>
-            <option value="Concluida">Concluida</option>
-            <option value="Reprovada">Reprovada</option>
-            <option value="Finalizada">Finalizada</option>
+        <select name="id_etapa" id="id_etapa" class="form-control">
+            @foreach($etapas as $etapa)
+            <option value="{{$etapa->id}}">{{$etapa->descricao}}</option>
+            @endforeach
         </select>
     </div>
     <div class="form-group">

@@ -140,7 +140,7 @@
             <td>{{ $post -> cpf_cnpj_id }}</td>
             <td>{{ $post -> cliente }}</td>
             <td>{{ $post -> solicitante }}</td>
-            <td>{{ $post -> etapa }}</td>
+            <td>{{ $post -> etapa -> descricao }}</td>
             <td>{{ $post -> data_solicitacao }}</td>
             <td>{{ $post -> data_aprovacao }}</td>
             <td>{{ $post -> tipo_solicitacao }}</td>
@@ -186,7 +186,7 @@
                         <?php
                             $data = date('Y-m-d'); 
                         ?>
-                        <input type="hidden" name="etapa" value="Em Andamento" id="etapa" name="etapa">
+                        <input type="hidden" name="id_etapa" value="1" id="id_etapa" name="id_etapa">
                         <input type="hidden" name="data_solicitacao" value="<?php echo $data ?>" id="data_solicitacao" name="data_solicitacao">
                         <input type="submit" class="btn btn-primary" value="Salvar Solicitação">
                     </form>
@@ -231,7 +231,7 @@
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
                             <td>{{ $post -> solicitante }}</td>
-                            <td>{{ $post -> etapa }}</td>
+                            <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ $post -> data_solicitacao }}</td>
                             <td>{{ $post -> data_aprovacao }}</td>
                             <td>{{ $post -> tipo_solicitacao }}</td>
@@ -285,7 +285,7 @@
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
                             <td>{{ $post -> solicitante }}</td>
-                            <td>{{ $post -> etapa }}</td>
+                            <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ $post -> data_solicitacao }}</td>
                             <td>{{ $post -> data_aprovacao }}</td>
                             <td>{{ $post -> tipo_solicitacao }}</td>
@@ -331,7 +331,7 @@
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
                             <td>{{ $post -> solicitante }}</td>
-                            <td>{{ $post -> etapa }}</td>
+                            <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ $post -> data_solicitacao }}</td>
                             <td>{{ $post -> data_aprovacao }}</td>
                             <td>{{ $post -> tipo_solicitacao }}</td>
@@ -377,7 +377,7 @@
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
                             <td>{{ $post -> solicitante }}</td>
-                            <td>{{ $post -> etapa }}</td>
+                            <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ $post -> data_solicitacao }}</td>
                             <td>{{ $post -> data_aprovacao }}</td>
                             <td>{{ $post -> tipo_solicitacao }}</td>
@@ -423,7 +423,7 @@
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
                             <td>{{ $post -> solicitante }}</td>
-                            <td>{{ $post -> etapa }}</td>
+                            <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ $post -> data_solicitacao }}</td>
                             <td>{{ $post -> data_aprovacao }}</td>
                             <td>{{ $post -> tipo_solicitacao }}</td>
