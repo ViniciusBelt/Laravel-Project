@@ -9,10 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'caixaEntrada';
+    protected $table = 'users';
 
     protected $guarded = [];
-    public function etapa(){
-        return $this->hasOne(Etapas::class, 'id', 'id_etapa'); 
-    }
 }
