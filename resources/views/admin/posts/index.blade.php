@@ -121,7 +121,7 @@
 </div>
 
 <!-- Minhas Ultimas Solicitações -->
-<div class="col align-self-center" style="text-align: center">
+<div class="col align-self-center table-responsive" style="text-align: center">
     <table class="table table-striped table-hover" style="text-align: center">
         <h4>Minhas Ultimas Solicitações</h4>
         <thead class="tbl-cabecalho">
@@ -210,7 +210,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col" style="text-align: center">
+                <div class="col table-responsive" style="text-align: center">
                     <table class="table table-sm">
                         <h4>Caixa de Entrada</h4>
                         <thead class="tbl-cabecalho">
@@ -266,7 +266,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col" style="text-align: center">
+                <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
                         <h4>Em Andamento</h4>
                         <thead class="tbl-cabecalho">
@@ -312,7 +312,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col" style="text-align: center">
+                <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
                         <h4>Minhas Solicitações</h4>
                         <thead class="tbl-cabecalho">
@@ -358,7 +358,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col" style="text-align: center">
+                <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
                         <h4>A Vencer Hoje</h4>
                         <thead class="tbl-cabecalho">
@@ -404,7 +404,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col" style="text-align: center">
+                <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
                         <h4>Solicitações do Dia</h4>
                         <thead class="tbl-cabecalho">
