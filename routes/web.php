@@ -25,3 +25,5 @@ Route::delete('/{id}', [PostController::class, 'destroy']);
 Route::get('/edit/{id}', [PostController::class, 'edit']);
 
 Route::post('/update/{id}', [PostController::class, 'update']);
+
+Route::get('/solicitacoes', [PostController::class, 'solicitacoes'])->name('solicitacoes');
