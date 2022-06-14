@@ -12,7 +12,7 @@ class PostController extends Controller
         $date = date('Y-m-d');
 
         $posts = Post::with('etapa')->get()->sortByDesc('id');
-        $countEntrada = Post::count();
+        $countEntrada = $posts->count();
 
 
         $andamento = Post::with('etapa')->where('id_etapa', '=', '1')
@@ -106,7 +106,7 @@ class PostController extends Controller
 
     public function destroy($id){
         Post::findOrFail($id)->delete();
-        return redirect('/')->with('msg', 'Solicitação Excluida com Sucesso!');
+        return redirect()->back()->with('msg', 'Solicitação Excluida com Sucesso!');
     }
 
     public function edit($id){
@@ -120,6 +120,10 @@ class PostController extends Controller
     public function update(Request $request){
         Post::findOrFail($request->id)->update($request->all());
 
-        return redirect('/')->with('msg', 'Etapa Editada com Sucesso!');
+        return redirect()->back()->with('msg', 'Etapa Editada com Sucesso!');
+    }
+    public function solicitacoes(){
+        $posts = Post::with('etapa')->where('id_etapa', '=', 1)->orWhere('id_etapa', '=', 2)->get()->sortByDesc('id');
+        return view('admin.posts.solicitacoes', compact('posts'));
     }
 }

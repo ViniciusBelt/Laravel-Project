@@ -1,5 +1,5 @@
 @include('layouts.app')
-<form action="/update/{{ $event->id }}" method="post">
+<form action="/update/{{ $event->id }}" method="post" id="formEdit">
     @csrf
     <div class="form-group">
         <label for="title" style="float: left;">Tipo de Solicitação</label>
@@ -35,6 +35,33 @@
     ?>
     <input type="hidden" name="data_solicitacao" value="<?php echo $data ?>" id="data_solicitacao"
         name="data_solicitacao">
-    <input type="submit" class="btn btn-primary" value="Salvar Solicitação">
+    <input type="button" class="btn btn-primary" value="Salvar Solicitação" onclick="editForm()">
 </form>
 @include('layouts.final')
+<script>
+    function editForm(){
+        Swal.fire({
+            title: 'Atenção',
+            text: 'Deseja mesmo editar esta solicitação?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ok',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'A solcitação foi editada!',
+                'A solicitação foi editada com sucesso.',
+                'success'
+                )
+                $('#formEdit').submit()
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                'Cancelado',
+                'A solicitação não foi editada.',
+                'error'
+                )
+            }
+        })
+    }
+</script>
