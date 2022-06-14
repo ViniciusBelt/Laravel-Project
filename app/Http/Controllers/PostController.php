@@ -123,7 +123,10 @@ class PostController extends Controller
         return redirect()->back()->with('msg', 'Etapa Editada com Sucesso!');
     }
     public function solicitacoes(){
-        $posts = Post::with('etapa')->where('id_etapa', '=', 1)->orWhere('id_etapa', '=', 2)->get()->sortByDesc('id');
-        return view('admin.posts.solicitacoes', compact('posts'));
+        $solicitacoes = Post::with('etapa')->where('id_etapa', '=', 1)->orWhere('id_etapa', '=', 2)->get()->sortByDesc('id');
+        $solicitacoesConcluidas = Post::with('etapa')->where('id_etapa', '=', 3)
+                                                     ->orWhere('id_etapa', '=', 4)
+                                                     ->orWhere('id_etapa', '=', 5)->get()->sortByDesc('id');
+        return view('admin.posts.solicitacoes', compact('solicitacoes', 'solicitacoesConcluidas'));
     }
 }
