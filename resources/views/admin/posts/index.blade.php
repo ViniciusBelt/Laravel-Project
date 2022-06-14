@@ -53,7 +53,7 @@
         <div class="small-box bg-danger">
             <div class="inner">
                 <h3>{{ $countAVencer }}</h3>
-                <p>A Vencer Hoje</p>
+                <p>A Vencer</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -81,77 +81,91 @@
 </div>
 <button class="btn btn-primary" data-toggle="modal" data-target="#novaSolicitacao">Nova Solicitação</button>
 <!-- Solicitação por Etapa -->
-<div class="col align-self-center" style="text-align: center">
-    <h4>Solicitação por etapa</h4>
-    <h5><a href="#" data-toggle="modal" data-target="#caixaEntrada">Caixa de Entrada</a></h5>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25"
-            aria-valuemin="0" aria-valuemax="100" style="width: {{ $porEntrada }}%; height:25px">
-            <h6>Caixa de Entrada</h6>
-        </div>
-    </div><br>
-    <h5><a href="#" data-toggle="modal" data-target="#emAndamento">Em Andamento</a></h5>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="45"
-            aria-valuemin="0" aria-valuemax="100" style="width: {{ $porAndamento }}%; height:25px">
-            <h6>Em Andamento</h6>
-        </div>
-    </div><br>
-    <h5><a href="#" data-toggle="modal" data-target="#minhasSolicitacoes">Minhas Solicitações</a></h5>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="65"
-            aria-valuemin="0" aria-valuemax="100" style="width: {{ $porMinha }}%; height:25px">
-            <h6>Minhas Solicitações</h6>
-        </div>
-    </div><br>
-    <h5><a href="#" data-toggle="modal" data-target="#aVencer">A Vencer Hoje</a></h5>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85"
-            aria-valuemin="0" aria-valuemax="100" style="width: {{ $porVencer }}%; height:25px">
-            <h6>A Vencer Hoje</h6>
-        </div>
-    </div><br>
-    <h5><a href="#" data-toggle="modal" data-target="#doDia">Solicitação do Dia</a></h5>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
-            aria-valuemin="0" aria-valuemax="100" style="width: {{ $porDia }}%; height:25px">
-            <h6>Solicitação do Dia</h6>
-        </div>
-    </div><br>
+<div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
+    <div class="card-header">
+      <h4>Solicitação por etapa</h4>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+    <div class="card-body">
+        <h5><a href="#" data-toggle="modal" data-target="#caixaEntrada">Caixa de Entrada</a></h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porEntrada }}%; height:25px">
+                <h6>Caixa de Entrada</h6>
+            </div>
+        </div><br>
+        <h5><a href="#" data-toggle="modal" data-target="#emAndamento">Em Andamento</a></h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="45"
+                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porAndamento }}%; height:25px">
+                <h6>Em Andamento</h6>
+            </div>
+        </div><br>
+        <h5><a href="#" data-toggle="modal" data-target="#minhasSolicitacoes">Minhas Solicitações</a></h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="65"
+                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porMinha }}%; height:25px">
+                <h6>Minhas Solicitações</h6>
+            </div>
+        </div><br>
+        <h5><a href="#" data-toggle="modal" data-target="#aVencer">A Vencer</a></h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85"
+                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porVencer }}%; height:25px">
+                <h6>A Vencer</h6>
+            </div>
+        </div><br>
+        <h5><a href="#" data-toggle="modal" data-target="#doDia">Solicitação do Dia</a></h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porDia }}%; height:25px">
+                <h6>Solicitação do Dia</h6>
+            </div>
+        </div><br>
+    </div>
+    <!-- /.card-body -->
 </div>
-
 <!-- Minhas Ultimas Solicitações -->
-<div class="col align-self-center table-responsive" style="text-align: center">
-    <table class="table table-striped table-hover" style="text-align: center">
-        <h4>Minhas Ultimas Solicitações</h4>
-        <thead class="tbl-cabecalho">
-            <tr>
-                <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
-                <th scope="col"><strong>Cliente</strong></th>
-                <th scope="col"><strong>Solicitante</strong></th>
-                <th scope="col"><strong>Etapa</strong></th>
-                <th scope="col"><strong>Data Solicitação</strong></th>
-                <th scope="col"><strong>Data Vencimento</strong></th>
-                <th scope="col"><strong>Tipo Solicitação</strong></th>
-            </tr>
-        </thead>
-        @foreach ($minha as $post)
-        <tbody>
-            <td>{{ $post -> cpf_cnpj_id }}</td>
-            <td>{{ $post -> cliente }}</td>
-            <td>{{ $post -> solicitante }}</td>
-            <td>{{ $post -> etapa -> descricao }}</td>
-            <td>{{ $post -> data_solicitacao }}</td>
-            <td>{{ $post -> data_aprovacao }}</td>
-            <td>{{ $post -> tipo_solicitacao }}</td>
-        </tbody>
-        @endforeach
-    </table>
+<div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
+    <div class="card-header">
+      <h4>Minhas Ultimas Solicitações</h4>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-hover" style="text-align: center">
+            <thead class="tbl-cabecalho">
+                <tr>
+                    <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
+                    <th scope="col"><strong>Cliente</strong></th>
+                    <th scope="col"><strong>Solicitante</strong></th>
+                    <th scope="col"><strong>Etapa</strong></th>
+                    <th scope="col"><strong>Data Solicitação</strong></th>
+                    <th scope="col"><strong>Data Vencimento</strong></th>
+                    <th scope="col"><strong>Tipo Solicitação</strong></th>
+                </tr>
+            </thead>
+            @foreach ($minha as $post)
+            <tbody>
+                <td>{{ $post -> cpf_cnpj_id }}</td>
+                <td>{{ $post -> cliente }}</td>
+                <td>{{ $post -> solicitante }}</td>
+                <td>{{ $post -> etapa -> descricao }}</td>
+                <td>{{ $post -> data_solicitacao }}</td>
+                <td>{{ $post -> data_aprovacao }}</td>
+                <td>{{ $post -> tipo_solicitacao }}</td>
+            </tbody>
+            @endforeach
+        </table>
+    </div>
+    <!-- /.card-body -->
 </div>
-
 <!-- Modal nova Solicitação -->
 <div class="modal fade" id="novaSolicitacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -193,7 +207,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -249,7 +263,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -295,7 +309,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -341,7 +355,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -360,7 +374,7 @@
             <div class="modal-body">
                 <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
-                        <h4>A Vencer Hoje</h4>
+                        <h4>A Vencer</h4>
                         <thead class="tbl-cabecalho">
                             <tr>
                                 <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
@@ -387,7 +401,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -433,7 +447,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
