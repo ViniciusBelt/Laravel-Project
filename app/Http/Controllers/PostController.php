@@ -101,7 +101,7 @@ class PostController extends Controller
         $event->data_solicitacao = $request->data_solicitacao;
 
         $event->save();
-        return redirect('/')->with('msg', 'Solicitação Cadastrada com Sucesso!');;
+        return redirect()->back()->with('msg', 'Solicitação Cadastrada com Sucesso!');;
     }
 
     public function destroy($id){
