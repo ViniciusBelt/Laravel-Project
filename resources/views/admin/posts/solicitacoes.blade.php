@@ -30,8 +30,8 @@
                     <td>{{ $post -> cliente }}</td>
                     <td>{{ $post -> solicitante }}</td>
                     <td>{{ $post -> etapa -> descricao }}</td>
-                    <td>{{ $post -> data_solicitacao }}</td>
-                    <td>{{ $post -> data_aprovacao }}</td>
+                    <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
                     <td>{{ $post -> tipo_solicitacao }}</td>
                     <td><a href="edit/{{ $post->id }}" class="btn btn-info edit-btn">Editar</a></td>
                     <td>
@@ -78,8 +78,8 @@
                     <td>{{ $post -> cliente }}</td>
                     <td>{{ $post -> solicitante }}</td>
                     <td>{{ $post -> etapa -> descricao }}</td>
-                    <td>{{ $post -> data_solicitacao }}</td>
-                    <td>{{ $post -> data_aprovacao }}</td>
+                    <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
                     <td>{{ $post -> tipo_solicitacao }}</td>
                     <td><a href="edit/{{ $post->id }}" class="btn btn-info edit-btn">Editar</a></td>
                     <td>
