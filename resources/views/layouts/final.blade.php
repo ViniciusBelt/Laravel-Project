@@ -63,23 +63,23 @@
                           @csrf
                           <div class="form-group">
                               <label for="title" style="float: left;">Tipo de Solicitação</label>
-                              <input type="text" class="form-control" id="tipo_solicitacao" name="tipo_solicitacao" placeholder="Tipo de Solicitação" maxlength="50">
+                              <input type="text" class="form-control" id="tipo_solicitacao" name="tipo_solicitacao" placeholder="Tipo de Solicitação" maxlength="50" required>
                           </div>
                           <div class="form-group">
                               <label for="title" style="float: left;">Cliente</label>
-                              <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Cliente" maxlength="50">
+                              <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Cliente" maxlength="50" required>
                           </div>
                           <div class="form-group">
                               <label for="title" style="float: left;">Solicitante</label>
-                              <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Solicitante" maxlength="50">
+                              <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Solicitante" maxlength="50" value="{{Auth::user()->usuario}}" disabled>
                           </div>
                           <div class="form-group">
                               <label for="title" style="float: left;">CPF/CNPJ/ID</label>
-                              <input type="text" class="form-control" id="cpf_cnpj_id" name="cpf_cnpj_id" placeholder="CPF/CNPJ/ID" maxlength="14">
+                              <input type="text" class="form-control" id="cpf_cnpj_id" name="cpf_cnpj_id" placeholder="CPF/CNPJ/ID" maxlength="14" required>
                           </div>
                           <div class="form-group">
                               <label for="title" style="float: left;">Data de Vencimento</label>
-                              <input type="date" class="form-control" id="data_aprovacao" name="data_aprovacao" placeholder="Data de Vencimento">
+                              <input type="date" class="form-control" id="data_aprovacao" name="data_aprovacao" placeholder="Data de Vencimento" required>
                           </div>
                           <?php
                               $data = date('Y-m-d'); 

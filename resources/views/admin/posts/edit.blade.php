@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
         <label for="title" style="float: left;">Solicitante</label>
-        <input type="text" class="form-control" id="solicitante" name="solicitante" value="{{ $event->solicitante }}" maxlength="50" @if($event->id_etapa == 3 || $event->id_etapa == 4 || $event->id_etapa == 5) disabled @endif>
+        <input type="text" class="form-control" id="solicitante" name="solicitante" value="{{ $event->solicitante }}" maxlength="50" disabled>
     </div>
     <div class="form-group">
         <label for="title" style="float: left;">Etapa</label><br>
