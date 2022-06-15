@@ -49,8 +49,12 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item" style="margin-top: auto; margin-bottom: auto;">
+            @auth
             <i class="fa fa-user"></i>
-              Beltran
+            {{Auth::user()->usuario}}
+            <br>
+            <a href="{{route('logout')}}">Logout</a>
+            @endauth
           </li>
           <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">

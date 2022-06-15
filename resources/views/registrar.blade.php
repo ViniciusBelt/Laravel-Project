@@ -26,17 +26,21 @@
                             <h3 class="text-center mb-4">Registrar</h3>
                             <form action="{{route('registrando')}}" class="login-form" id="register-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control rounded-left" id="user" placeholder="Usuario" maxlength="20" required>
+                                    <input type="text" class="form-control rounded-left" id="user" name="user" placeholder="Usuario" maxlength="20" required>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <input type="email" class="form-control rounded-left" id="mail" placeholder="Email" maxlength="60" required>
+                                    <input type="email" class="form-control rounded-left" id="mail" name="mail" placeholder="Email" maxlength="60" required>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <input type="password" class="form-control rounded-left" id="password" placeholder="Senha" maxlength="20" required>
+                                    <input type="password" class="form-control rounded-left" id="password" name="password" placeholder="Senha" maxlength="20" required>
                                 </div>
                                 <div class="form-group d-flex">
                                     <input type="password" class="form-control rounded-left" id="confirm-password" placeholder="Confirmar senha" maxlength="20" required>
                                 </div>
+                                <?php
+                                    $data = date('Y-m-d'); 
+                                ?>
+                                <input type="hidden" name="data_criacao" value="<?php echo $data ?>" id="data_criacao" name="data_criacao">
                                 <div class="form-group">
                                     <input type="submit" class="form-control btn btn-primary rounded submit px-3" onclick="submitBtn()" value="Registrar">
                                 </div>

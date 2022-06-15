@@ -23,12 +23,12 @@
                                 <span class="fa fa-user-o"></span>
                             </div>
                             <h3 class="text-center mb-4">Login</h3>
-                            <form action="#" class="login-form">
+                            <form action="{{route('login')}}" class="login-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control rounded-left" placeholder="Usuario" required>
+                                    <input type="text" class="form-control rounded-left" name="user" id="user" placeholder="Usuario" required>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <input type="password" class="form-control rounded-left" placeholder="Senha" required>
+                                    <input type="password" class="form-control rounded-left" name="password" id="password" placeholder="Senha" required>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit"
