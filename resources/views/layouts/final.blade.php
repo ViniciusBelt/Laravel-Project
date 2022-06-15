@@ -56,9 +56,9 @@
                       <span aria-hidden="true">&times;</span>
                   </button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body" style="text-align: center">
+                  <h4>Nova Solicitação</h4>
                   <div class="col" style="text-align: center">
-                      <h4>Nova Solicitação</h4>
                       <form action="/" method="post">
                           @csrf
                           <div class="form-group">

@@ -135,7 +135,7 @@
         <i class="fas fa-minus"></i>
       </button>
     </div>
-    <div class="card-body">
+    <div class="card-body table-responsive">
         <table class="table table-striped table-hover" style="text-align: center">
             <thead class="tbl-cabecalho">
                 <tr>
@@ -174,10 +174,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="col table-responsive" style="text-align: center">
+            <div class="modal-body" style="text-align: center">
+                <h4>Caixa de Entrada</h4>
+                <div class="col table-responsive">
                     <table class="table table-sm">
-                        <h4>Caixa de Entrada</h4>
                         <thead class="tbl-cabecalho">
                             <tr>
                                 <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
@@ -230,10 +230,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="text-align: center">
+                <h4>Em Andamento</h4>
                 <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
-                        <h4>Em Andamento</h4>
                         <thead class="tbl-cabecalho">
                             <tr>
                                 <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
@@ -276,10 +276,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="text-align: center">
+                <h4>Minhas Solicitações</h4>
                 <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
-                        <h4>Minhas Solicitações</h4>
                         <thead class="tbl-cabecalho">
                             <tr>
                                 <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
@@ -322,10 +322,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="text-align: center">
+                <h4>A Vencer</h4>
                 <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
-                        <h4>A Vencer</h4>
                         <thead class="tbl-cabecalho">
                             <tr>
                                 <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
@@ -368,10 +368,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="text-align: center">
+                <h4>Solicitações do Dia</h4>
                 <div class="col table-responsive" style="text-align: center">
                     <table class="table table-striped table-hover">
-                        <h4>Solicitações do Dia</h4>
                         <thead class="tbl-cabecalho">
                             <tr>
                                 <th scope="col"><strong>CPF/CNPJ/ID</strong></th>
