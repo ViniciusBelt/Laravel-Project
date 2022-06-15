@@ -1,10 +1,13 @@
 ----------TABELA ETAPAS----------
+
 CREATE TABLE etapas (
     id int NOT NULL AUTO_INCREMENT,
     descricao varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
 ----------CARGA ETAPAS----------
+
 INSERT
 	INTO
 	laravel.etapas
@@ -16,6 +19,7 @@ VALUES ('Em Andamento'),
 ('Finalizada');
 
 ----------TABELA USERS----------
+
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
     usuario varchar(255) NOT NULL,
@@ -26,6 +30,7 @@ CREATE TABLE users (
 );
 
 ----------TABELA CAIXA-ENTRADA----------
+
 CREATE TABLE caixaEntrada (
     id int NOT NULL AUTO_INCREMENT,
     cpf_cnpj_id varchar(255) NOT NULL,
@@ -37,7 +42,9 @@ CREATE TABLE caixaEntrada (
     tipo_solicitacao varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
 ----------CHAVE ESTRANGEIRA----------
+
 ALTER TABLE
 	caixaEntrada 
 ADD FOREIGN KEY
