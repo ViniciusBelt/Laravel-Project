@@ -28,7 +28,7 @@ class PostController extends Controller
         $countMinha = $minha->count();
 
 
-        $aVencer = Post::with('etapa')->where('data_aprovacao', '<=', "$date")
+        $aVencer = Post::with('etapa')->where('data_aprovacao', '<=', "$date")->where('id_etapa', '=', '1')->orWhere('id_etapa', '=', '2')
         ->orderBy('id', 'DESC')
         ->get();
         $countAVencer = $aVencer->count();
