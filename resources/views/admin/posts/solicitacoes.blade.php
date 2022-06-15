@@ -4,10 +4,9 @@
 <!-- Solicitações finalizadas -->
 <div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
     <div class="card-header">
-      <h4>Solicitações pendentes</h4>
-      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-        <i class="fas fa-minus"></i>
-      </button>
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <h4>Solicitações pendentes</h4>
+        </button>
     </div>
     <div class="card-body">
         <div class="col table-responsive" style="text-align: center">
@@ -53,10 +52,9 @@
 <!-- Solicitações finalizadas -->
 <div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
     <div class="card-header">
-      <h4>Solicitações concluidas</h4>
-      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-        <i class="fas fa-minus"></i>
-      </button>
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <h4>Solicitações concluidas</h4>
+        </button>
     </div>
     <div class="card-body">
         <div class="col table-responsive" style="text-align: center">
