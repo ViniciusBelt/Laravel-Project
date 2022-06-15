@@ -25,7 +25,7 @@ class PostController extends Controller
             $countAndamento = $andamento->count();
             
             
-            $minha = Post::with('etapa')->where('solicitante', 'LIKE', "%Beltran%")
+            $minha = Post::with('etapa')->where('solicitante', '=', Auth::user()->usuario)
             ->orderBy('id', 'DESC')
             ->get();
             $countMinha = $minha->count();
@@ -101,7 +101,7 @@ class PostController extends Controller
             
             $event->tipo_solicitacao = $request->tipo_solicitacao;
             $event->cliente          = $request->cliente;
-            $event->solicitante      = $request->solicitante;
+            $event->solicitante      = Auth::user()->usuario;
             $event->cpf_cnpj_id      = $request->cpf_cnpj_id;
             $event->data_aprovacao   = $request->data_aprovacao;        
             $event->id_etapa         = $request->id_etapa;
