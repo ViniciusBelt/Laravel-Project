@@ -88,10 +88,10 @@ class PostController extends Controller
                 'porMinha',
                 'porVencer',
                 'porDia',
-                ));
+                ))->with('alert', 'Usuario logado com sucesso');
             }
         }else{
-            return redirect('login');
+            return view('login')->with('alert', 'Usuario não cadastrado');
         }
     }
 

@@ -15,7 +15,7 @@ class Authenticate extends Controller
         $event->senha        = md5($request->password);
         $event->data_criacao = $request->data_criacao;
         $event->save();
-        return redirect('login');
+        return view('login')->with('alert', 'Usuario cadastrado com sucesso');
     }
 
     public function login(Request $request){
@@ -24,10 +24,9 @@ class Authenticate extends Controller
                       ->where('senha',md5($request->password))
                       ->first();
             Auth::login($user);
-            return redirect(route('index'));
+            return redirect(route('index'))->with('alert', 'Usuario logado com sucesso');
         } catch (\Throwable $th) {
-            $user = "Não Autenticado";
-            return redirect(route('index'));
+            return redirect(route('index'))->with('alert', 'Usuario não cadastrado');;
         }
     }
 
