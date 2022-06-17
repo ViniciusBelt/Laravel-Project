@@ -11,6 +11,7 @@ class Authenticate extends Controller
     public function criarUsuario(Request $request){
         $event = new User;
         $event->usuario      = $request->user;
+        $event->nome        = $request->name;
         $event->email        = $request->mail;
         $event->senha        = md5($request->password);
         $event->data_criacao = $request->data_criacao;
