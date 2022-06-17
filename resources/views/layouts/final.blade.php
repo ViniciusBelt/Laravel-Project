@@ -71,7 +71,7 @@
                           </div>
                           <div class="form-group">
                               <label for="title" style="float: left;">Solicitante</label>
-                              <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Solicitante" maxlength="50" value="{{Auth::user()->usuario}}" disabled>
+                              <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Solicitante" maxlength="50" value="{{Auth::user()->nome}}" disabled>
                           </div>
                           <div class="form-group">
                               <label for="title" style="float: left;">CPF/CNPJ/ID</label>
