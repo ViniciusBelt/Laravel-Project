@@ -29,6 +29,9 @@
                                     <input type="text" class="form-control rounded-left" id="user" name="user" placeholder="Usuario" maxlength="20" required>
                                 </div>
                                 <div class="form-group d-flex">
+                                    <input type="text" class="form-control rounded-left" id="name" name="name" placeholder="Nome Completo" maxlength="60" required>
+                                </div>
+                                <div class="form-group d-flex">
                                     <input type="email" class="form-control rounded-left" id="mail" name="mail" placeholder="Email" maxlength="60" required>
                                 </div>
                                 <div class="form-group d-flex">

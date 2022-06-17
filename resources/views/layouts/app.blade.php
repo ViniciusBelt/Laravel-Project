@@ -51,7 +51,7 @@
           <li class="nav-item" style="margin-top: auto; margin-bottom: auto;">
             @auth
             <i class="fa fa-user"></i>
-            {{Auth::user()->usuario}}
+            {{Auth::user()->nome}}
             <br>
             <a href="{{route('logout')}}">Logout</a>
             @endauth

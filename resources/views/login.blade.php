@@ -50,4 +50,26 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
     </body>
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+    
+            Toast.fire({
+            icon: 'alert',
+            title: msg
+            })
+        }
+    </script>
 </html>
