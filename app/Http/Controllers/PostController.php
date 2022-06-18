@@ -19,26 +19,29 @@ class PostController extends Controller
             
             
             $andamento = Post::with('etapa')->where('id_etapa', '=', '1')
-            ->orWhere('id_etapa', '=', '2')
-            ->orderBy('id', 'DESC')
-            ->get();
+                                            ->orWhere('id_etapa', '=', '2')
+                                            ->orderBy('id', 'DESC')
+                                            ->get();
             $countAndamento = $andamento->count();
             
             
             $minha = Post::with('etapa')->where('solicitante', '=', Auth::user()->usuario)
-            ->orderBy('id', 'DESC')
-            ->get();
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
             $countMinha = $minha->count();
             
-            
-            $aVencer = Post::with('etapa')->where('data_aprovacao', '<=', "$date")->where('id_etapa', '=', '1')->orWhere('id_etapa', '=', '2')
-            ->orderBy('id', 'DESC')
-            ->get();
+            $aVencer = Post::with('etapa')->where('data_aprovacao', '<=', $date)
+                                          ->where(function ($query){
+                                                $query->where('id_etapa', '=', '1')
+                                                    ->orWhere('id_etapa', '=', '2');
+                                            })
+                                          ->orderBy('id', 'DESC')
+                                          ->get();
             $countAVencer = $aVencer->count();
             
             $doDia = Post::with('etapa')->where('data_solicitacao', '=', "$date")
-            ->orderBy('id', 'DESC')
-            ->get();
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
             $countDoDia = $doDia->count();
             
             if($countEntrada != 0){
@@ -147,8 +150,8 @@ class PostController extends Controller
         if(Auth::user()){
             $solicitacoes = Post::with('etapa')->where('id_etapa', '=', 1)->orWhere('id_etapa', '=', 2)->get()->sortByDesc('id');
             $solicitacoesConcluidas = Post::with('etapa')->where('id_etapa', '=', 3)
-                                                        ->orWhere('id_etapa', '=', 4)
-                                                        ->orWhere('id_etapa', '=', 5)->get()->sortByDesc('id');
+                                                         ->orWhere('id_etapa', '=', 4)
+                                                         ->orWhere('id_etapa', '=', 5)->get()->sortByDesc('id');
             return view('admin.posts.solicitacoes', compact('solicitacoes', 'solicitacoesConcluidas'));
         }else{
             return redirect('login');
