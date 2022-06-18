@@ -45,7 +45,7 @@
                                 ?>
                                 <input type="hidden" name="data_criacao" value="<?php echo $data ?>" id="data_criacao" name="data_criacao">
                                 <div class="form-group">
-                                    <input type="submit" class="form-control btn btn-primary rounded submit px-3" onclick="submitBtn()" value="Registrar">
+                                    <input type="button" class="form-control btn btn-primary rounded submit px-3" onclick="submitBtn()" value="Registrar">
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50">
@@ -80,9 +80,9 @@
                 confirmPassword.reportValidity();
                 return false;
             } else {
+                document.getElementById("register-form").submit();
                 confirmPassword.setCustomValidity("");
                 return true;
-                document.getElementById("register-form").submit();
             }
             // verificar também quando o campo for modificado, para que a mensagem suma quando as senhas forem iguais
             confirmPassword.addEventListener('input', validarSenha);
