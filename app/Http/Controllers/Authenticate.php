@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class Authenticate extends Controller
 {
     public function criarUsuario(Request $request){
         $event = new User;
         $event->usuario      = $request->user;
-        $event->nome        = $request->name;
+        $event->nome         = $request->name;
         $event->email        = $request->mail;
-        $event->senha        = md5($request->password);
+        $event->senha        = Hash::make($request->password);
         $event->data_criacao = $request->data_criacao;
         $event->save();
         return view('login')->with('alert', 'Usuario cadastrado com sucesso');
@@ -22,12 +23,13 @@ class Authenticate extends Controller
     public function login(Request $request){
         try {
             $user = User::where('usuario', $request->user)
-                      ->where('senha',md5($request->password))
-                      ->first();
-            Auth::login($user);
-            return redirect(route('index'))->with('alert', 'Usuario logado com sucesso');
-        } catch (\Throwable $th) {
+                        ->first();
+            if($user && Hash::check($request->password, $user->senha)){
+                Auth::login($user);
+                return redirect(route('index'))->with('alert', 'Usuario logado com sucesso');
+            }
             return redirect(route('index'))->with('alert', 'Usuario não cadastrado');;
+        } catch (\Throwable $th) {
         }
     }
 
