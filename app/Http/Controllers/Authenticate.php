@@ -17,7 +17,7 @@ class Authenticate extends Controller
         $event->senha        = Hash::make($request->password);
         $event->data_criacao = $request->data_criacao;
         $event->save();
-        return view('login')->with('alert', 'Usuario cadastrado com sucesso');
+        return redirect('/login')->with('alert', 'Usuario cadastrado com sucesso');
     }
 
     public function login(Request $request){
