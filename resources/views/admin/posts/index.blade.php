@@ -84,7 +84,7 @@
 <div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
     <div class="card-header">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <h4>Solicitação por etapa</h4>
+          <h4>Solicitação por Etapa</h4>
         </button>
     </div>
     <div class="card-body">

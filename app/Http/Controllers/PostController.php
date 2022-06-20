@@ -45,12 +45,11 @@ class PostController extends Controller
             $countDoDia = $doDia->count();
             
             if($countEntrada != 0){
-                $countTotal = 100 / ($countEntrada + $countAndamento + $countMinha + $countAVencer + $countDoDia);
-                $porEntrada = $countEntrada * $countTotal;
-                $porAndamento = $countAndamento * $countTotal;
-                $porMinha = $countMinha * $countTotal;
-                $porVencer = $countAVencer * $countTotal;
-                $porDia = $countDoDia * $countTotal;
+                $porEntrada = (100 * $countEntrada) / $countEntrada;
+                $porAndamento = (100 * $countAndamento) / $countEntrada;
+                $porMinha = (100 * $countMinha) / $countEntrada;
+                $porVencer = (100 * $countAVencer) / $countEntrada;
+                $porDia = (100 * $countDoDia) / $countEntrada;
                 
                 return view('admin.posts.index', compact('posts',
                 'andamento',
