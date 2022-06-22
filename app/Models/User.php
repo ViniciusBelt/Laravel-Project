@@ -13,4 +13,10 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $guarded = [];
+    public function caixaEntrada(){
+        return $this->belongsTo(Post::class, 'id_solicitante', 'id');
+    }
+    public function acesso(){
+        return $this->hasOne(Acesso::class, 'id', 'id_acesso'); 
+    }
 }

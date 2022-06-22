@@ -14,6 +14,7 @@ class Authenticate extends Controller
         $event->usuario      = $request->user;
         $event->nome         = $request->name;
         $event->email        = $request->mail;
+        $event->id_acesso    = 3;
         $event->senha        = Hash::make($request->password);
         $event->data_criacao = $request->data_criacao;
         $event->save();

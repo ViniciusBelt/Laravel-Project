@@ -93,6 +93,16 @@
                   </p>
                 </a>
               </li>
+              @if(Auth::user()->id_acesso === 1)
+              <li class="nav-item">
+                <a href="{{ url('/acessos') }}" class="nav-link">
+                  <i class="nav-icon fas fa-lock"></i>
+                  <p>
+                    Administrador
+                  </p>
+                </a>
+              </li>
+              @endif
             </ul>
           </nav>
           <!-- /.sidebar-menu -->

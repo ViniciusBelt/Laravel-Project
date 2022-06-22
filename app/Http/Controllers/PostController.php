@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Acesso;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Etapas;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         if(Auth::user()){
 
             $date = date('Y-m-d');
@@ -20,13 +23,13 @@ class PostController extends Controller
             
             $andamento = Post::with('etapa')->where('id_etapa', '=', '1')
                                             ->orWhere('id_etapa', '=', '2')
-                                            ->orderBy('id', 'DESC')
+                                            ->orderBy('caixaEntrada.id', 'DESC')
                                             ->get();
             $countAndamento = $andamento->count();
             
             
-            $minha = Post::with('etapa')->where('solicitante', '=', Auth::user()->usuario)
-                                        ->orderBy('id', 'DESC')
+            $minha = Post::with('etapa')->where('id_solicitante', '=', Auth::user()->id)
+                                        ->orderBy('caixaEntrada.id', 'DESC')
                                         ->get();
             $countMinha = $minha->count();
             
@@ -35,22 +38,21 @@ class PostController extends Controller
                                                 $query->where('id_etapa', '=', '1')
                                                     ->orWhere('id_etapa', '=', '2');
                                             })
-                                          ->orderBy('id', 'DESC')
+                                          ->orderBy('caixaEntrada.id', 'DESC')
                                           ->get();
             $countAVencer = $aVencer->count();
             
             $doDia = Post::with('etapa')->where('data_solicitacao', '=', "$date")
-                                        ->orderBy('id', 'DESC')
+                                        ->orderBy('caixaEntrada.id', 'DESC')
                                         ->get();
             $countDoDia = $doDia->count();
             
             if($countEntrada != 0){
-                $countTotal = 100 / ($countEntrada + $countAndamento + $countMinha + $countAVencer + $countDoDia);
-                $porEntrada = $countEntrada * $countTotal;
-                $porAndamento = $countAndamento * $countTotal;
-                $porMinha = $countMinha * $countTotal;
-                $porVencer = $countAVencer * $countTotal;
-                $porDia = $countDoDia * $countTotal;
+                $porEntrada = (100 * $countEntrada) / $countEntrada;
+                $porAndamento = (100 * $countAndamento) / $countEntrada;
+                $porMinha = (100 * $countMinha) / $countEntrada;
+                $porVencer = (100 * $countAVencer) / $countEntrada;
+                $porDia = (100 * $countDoDia) / $countEntrada;
                 
                 return view('admin.posts.index', compact('posts',
                 'andamento',
@@ -98,13 +100,14 @@ class PostController extends Controller
         }
     }
 
-    public function salvar(Request $request){
+    public function salvar(Request $request)
+    {
         if(Auth::user()){
             $event = new Post;
             
             $event->tipo_solicitacao = $request->tipo_solicitacao;
             $event->cliente          = $request->cliente;
-            $event->solicitante      = Auth::user()->usuario;
+            $event->id_solicitante   = Auth::user()->id;
             $event->cpf_cnpj_id      = $request->cpf_cnpj_id;
             $event->data_aprovacao   = $request->data_aprovacao;        
             $event->id_etapa         = $request->id_etapa;
@@ -117,7 +120,8 @@ class PostController extends Controller
         }
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         if(Auth::user()){
             Post::findOrFail($id)->delete();
             return redirect()->back()->with('msg', 'Solicitação Excluida com Sucesso!');
@@ -126,7 +130,8 @@ class PostController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         if(Auth::user()){
             $event = Post::findOrFail($id);
             $etapas = Etapas::all();
@@ -137,7 +142,8 @@ class PostController extends Controller
         }
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         if(Auth::user()){
             Post::findOrFail($request->id)->update($request->all());
     
@@ -146,13 +152,59 @@ class PostController extends Controller
             return redirect('login');
         }
     }
-    public function solicitacoes(){
+
+    public function solicitacoes()
+    {
         if(Auth::user()){
             $solicitacoes = Post::with('etapa')->where('id_etapa', '=', 1)->orWhere('id_etapa', '=', 2)->get()->sortByDesc('id');
             $solicitacoesConcluidas = Post::with('etapa')->where('id_etapa', '=', 3)
                                                          ->orWhere('id_etapa', '=', 4)
                                                          ->orWhere('id_etapa', '=', 5)->get()->sortByDesc('id');
             return view('admin.posts.solicitacoes', compact('solicitacoes', 'solicitacoesConcluidas'));
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function acessos()
+    {
+        if(Auth::user() && Auth::user()->id_acesso === 1){
+            $usuarios = User::get()->sortByDesc('id');
+            return view('admin.posts.acessos', compact('usuarios'));
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function destroyUser($id)
+    {
+        if(Auth::user() && Auth::user()->id_acesso === 1){
+            Post::where('id_solicitante', '=', $id)->delete();
+            User::findOrFail($id)->delete();
+            return redirect()->back()->with('msg', 'Usuario Excluido com Sucesso!');
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function editUser($id)
+    {
+        if(Auth::user() && Auth::user()->id_acesso === 1){
+            $event = User::findOrFail($id);
+            $acesso = Acesso::all();
+    
+            return view('admin.posts.editUser', ['event' => $event], compact('acesso'));
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function updateUser(Request $request)
+    {
+        if(Auth::user() && Auth::user()->id_acesso === 1){
+            User::findOrFail($request->id)->update($request->all());
+    
+            return redirect(url('/acessos'))->with('alert', 'Usuario Editado com Sucesso!');
         }else{
             return redirect('login');
         }

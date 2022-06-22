@@ -35,3 +35,11 @@ Route::get('/edit/{id}', [PostController::class, 'edit']);
 Route::post('/update/{id}', [PostController::class, 'update']);
 
 Route::get('/solicitacoes', [PostController::class, 'solicitacoes'])->name('solicitacoes');
+
+Route::get('/acessos', [PostController::class, 'acessos'])->name('acessos');
+
+Route::delete('/excluirUser/{id}', [PostController::class, 'destroyUser']);
+
+Route::get('/editUser/{id}', [PostController::class, 'editUser']);
+
+Route::post('/updateUser/{id}', [PostController::class, 'updateUser']);
