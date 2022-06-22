@@ -15,4 +15,7 @@ class Post extends Model
     public function etapa(){
         return $this->hasOne(Etapas::class, 'id', 'id_etapa'); 
     }
+    public function users(){
+        return $this->hasOne(User::class, 'id', 'id_solicitante'); 
+    }
 }

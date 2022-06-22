@@ -20,13 +20,13 @@ class PostController extends Controller
             
             $andamento = Post::with('etapa')->where('id_etapa', '=', '1')
                                             ->orWhere('id_etapa', '=', '2')
-                                            ->orderBy('id', 'DESC')
+                                            ->orderBy('caixaEntrada.id', 'DESC')
                                             ->get();
             $countAndamento = $andamento->count();
             
             
-            $minha = Post::with('etapa')->where('solicitante', '=', Auth::user()->usuario)
-                                        ->orderBy('id', 'DESC')
+            $minha = Post::with('etapa')->where('id_solicitante', '=', Auth::user()->id)
+                                        ->orderBy('caixaEntrada.id', 'DESC')
                                         ->get();
             $countMinha = $minha->count();
             
@@ -35,12 +35,12 @@ class PostController extends Controller
                                                 $query->where('id_etapa', '=', '1')
                                                     ->orWhere('id_etapa', '=', '2');
                                             })
-                                          ->orderBy('id', 'DESC')
+                                          ->orderBy('caixaEntrada.id', 'DESC')
                                           ->get();
             $countAVencer = $aVencer->count();
             
             $doDia = Post::with('etapa')->where('data_solicitacao', '=', "$date")
-                                        ->orderBy('id', 'DESC')
+                                        ->orderBy('caixaEntrada.id', 'DESC')
                                         ->get();
             $countDoDia = $doDia->count();
             
@@ -103,7 +103,7 @@ class PostController extends Controller
             
             $event->tipo_solicitacao = $request->tipo_solicitacao;
             $event->cliente          = $request->cliente;
-            $event->solicitante      = Auth::user()->usuario;
+            $event->id_solicitante   = Auth::user()->id;
             $event->cpf_cnpj_id      = $request->cpf_cnpj_id;
             $event->data_aprovacao   = $request->data_aprovacao;        
             $event->id_etapa         = $request->id_etapa;

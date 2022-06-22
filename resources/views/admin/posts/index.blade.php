@@ -150,7 +150,7 @@
             <tbody>
                 <td>{{ $post -> cpf_cnpj_id }}</td>
                 <td>{{ $post -> cliente }}</td>
-                <td>{{ $post -> solicitante }}</td>
+                <td>{{ $post -> users -> nome }}</td>
                 <td>{{ $post -> etapa -> descricao }}</td>
                 <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
                 <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
@@ -193,11 +193,12 @@
                         <tbody>
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
-                            <td>{{ $post -> solicitante }}</td>
+                            <td>{{ $post -> users -> nome }}</td>
                             <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
                             <td>{{ $post -> tipo_solicitacao }}</td>
+                            @if(Auth::user()->id_acesso === 1 || Auth::user()->id === $post -> users -> id)
                             <td><a href="edit/{{ $post->id }}" class="btn btn-info edit-btn">Editar</a></td>
                             <td>
                                 <form action="/{{ $post->id }}" method="POST" id="formDelete">
@@ -206,6 +207,7 @@
                                     <input type="button" class="btn btn-danger delete-btn" id="btnDeletar" value="Deletar" onclick="deleteForm()">
                                 </form>
                             </td>
+                            @endif
                         </tbody>
                         @endforeach
                     </table>
@@ -247,7 +249,7 @@
                         <tbody>
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
-                            <td>{{ $post -> solicitante }}</td>
+                            <td>{{ $post -> users -> nome }}</td>
                             <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
@@ -293,7 +295,7 @@
                         <tbody>
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
-                            <td>{{ $post -> solicitante }}</td>
+                            <td>{{ $post -> users -> nome }}</td>
                             <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
@@ -339,7 +341,7 @@
                         <tbody>
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
-                            <td>{{ $post -> solicitante }}</td>
+                            <td>{{ $post -> users -> nome }}</td>
                             <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
@@ -385,7 +387,7 @@
                         <tbody>
                             <td>{{ $post -> cpf_cnpj_id }}</td>
                             <td>{{ $post -> cliente }}</td>
-                            <td>{{ $post -> solicitante }}</td>
+                            <td>{{ $post -> users -> nome }}</td>
                             <td>{{ $post -> etapa -> descricao }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_solicitacao)) }}</td>
                             <td>{{ date('d/m/Y', strtotime($post -> data_aprovacao)) }}</td>
