@@ -22,7 +22,7 @@
             @endforeach
         </select>
     </div>
-    <input type="button" class="btn btn-primary" value="Salvar Solicitação" onclick="editForm()" @if(Auth::user()->id_acesso != 1) disabled @endif>
+    <input type="button" class="btn btn-primary" value="Salvar Alterações" onclick="editForm()" @if(Auth::user()->id_acesso != 1) disabled @endif>
 </form>
 @include('layouts.final')
 <script>
