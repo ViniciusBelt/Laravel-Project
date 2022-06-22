@@ -1,5 +1,4 @@
 @include('layouts.app')
-<button class="btn btn" data-toggle="modal" data-target="#novaSolicitacao" style="float: right"><i class="bi bi-plus-circle-fill"></i></button>
 
 <!-- Solicitações finalizadas -->
 <div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
