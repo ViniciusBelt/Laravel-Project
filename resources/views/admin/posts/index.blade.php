@@ -415,10 +415,10 @@
     var numEntrada = document.getElementById('contEntrada');
     var minEntrada = 0;
     var maxEntrada = {{$countEntrada}};
-    var duracao = 300;
+    var duracao = 1000;
     var duracaoGrafico = 1000;
     for (var i = minEntrada; i <= maxEntrada; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             numEntrada.innerHTML = nr;
         }, i * duracao / maxEntrada, i);
     };
@@ -426,7 +426,7 @@
     var graficoEntrada = document.getElementById('graficoEntrada');
     var maxGraficoEntrada = {{$porEntrada}};
     for (var i = minEntrada; i <= maxGraficoEntrada; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             graficoEntrada.style.width = nr+'%';
         }, i * duracaoGrafico / maxGraficoEntrada, i);
     };
@@ -436,7 +436,7 @@
     var minAndamento = 0;
     var maxAndamento = {{$countAndamento}};
     for (var i = minAndamento; i <= maxAndamento; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             numAndamento.innerHTML = nr;
         }, i * duracao / maxAndamento, i);
     };
@@ -444,7 +444,7 @@
     var graficoAndamento = document.getElementById('graficoAndamento');
     var maxgraficoAndamento = {{$porAndamento}};
     for (var i = minEntrada; i <= maxgraficoAndamento; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             graficoAndamento.style.width = nr+'%';
         }, i * duracaoGrafico / maxgraficoAndamento, i);
     };
@@ -454,7 +454,7 @@
     var minMinha = 0;
     var maxMinha = {{$countMinha}};
     for (var i = minMinha; i <= maxMinha; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             numMinha.innerHTML = nr;
         }, i * duracao / maxMinha, i);
     };
@@ -462,7 +462,7 @@
     var graficoMinha = document.getElementById('graficoMinha');
     var maxgraficoMinha = {{$porMinha}};
     for (var i = minEntrada; i <= maxgraficoMinha; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             graficoMinha.style.width = nr+'%';
         }, i * duracaoGrafico / maxgraficoMinha, i);
     };
@@ -472,7 +472,7 @@
     var minVencer = 0;
     var maxVencer = {{$countAVencer}};
     for (var i = minVencer; i <= maxVencer; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             numVencer.innerHTML = nr;
         }, i * duracao / maxVencer, i);
     };
@@ -480,7 +480,7 @@
     var graficoVencer = document.getElementById('graficoVencer');
     var maxgraficoVencer = {{$porVencer}};
     for (var i = minEntrada; i <= maxgraficoVencer; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             graficoVencer.style.width = nr+'%';
         }, i * duracaoGrafico / maxgraficoVencer, i);
     };
@@ -490,7 +490,7 @@
     var minDia = 0;
     var maxDia = {{$countDoDia}};
     for (var i = minDia; i <= maxDia; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             numDia.innerHTML = nr;
         }, i * duracao / maxDia, i);
     };
@@ -498,7 +498,7 @@
     var graficoDia = document.getElementById('graficoDia');
     var maxgraficoDia = {{$porDia}};
     for (var i = minEntrada; i <= maxgraficoDia; i++) {
-        setTimeout(function(nr) {
+        setTimeout((nr) => {
             graficoDia.style.width = nr+'%';
         }, i * duracaoGrafico / maxgraficoDia, i);
     };
