@@ -61,7 +61,8 @@ INSERT
 (descricao)
 VALUES ('TI'),
 ('Analista'),
-('Solicitante');
+('Solicitante'),
+('INATIVO');
 
 ----------CHAVE ESTRANGEIRA----------
 

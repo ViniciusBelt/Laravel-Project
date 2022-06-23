@@ -25,7 +25,7 @@ class Authenticate extends Controller
         try {
             $user = User::where('usuario', $request->user)
                         ->first();
-            if($user && Hash::check($request->password, $user->senha)){
+            if($user && Hash::check($request->password, $user->senha) && $user->id_acesso != 4){
                 Auth::login($user);
                 return redirect(route('index'))->with('alert', 'Usuario logado com sucesso');
             }
