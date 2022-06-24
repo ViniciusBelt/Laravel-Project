@@ -5,7 +5,7 @@
         <!-- small box -->
         <div class="small-box bg-purple">
             <div class="inner">
-                <h3>{{ $countEntrada }}</h3>
+                <h3 id="contEntrada">0</h3>
                 <p>Caixa de Entrada</p>
             </div>
             <div class="icon">
@@ -20,7 +20,7 @@
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>{{ $countAndamento }}</h3>
+                <h3 id="countAndamento">0</h3>
 
                 <p>Em Andamento</p>
             </div>
@@ -36,7 +36,7 @@
         <!-- small box -->
         <div class="small-box bg-warning">
             <div class="inner">
-                <h3>{{ $countMinha }}</h3>
+                <h3 id="countMinha">0</h3>
 
                 <p>Minhas Solicitações</p>
             </div>
@@ -52,7 +52,7 @@
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>{{ $countAVencer }}</h3>
+                <h3 id="countAVencer">0</h3>
                 <p>A Vencer</p>
             </div>
             <div class="icon">
@@ -67,7 +67,7 @@
         <!-- small box -->
         <div class="small-box bg-primary">
             <div class="inner">
-                <h3>{{ $countDoDia }}</h3>
+                <h3 id="countDoDia">0</h3>
 
                 <p>Solicitações do Dia</p>
             </div>
@@ -91,35 +91,35 @@
         <h5><a href="#" data-toggle="modal" data-target="#caixaEntrada">Caixa de Entrada</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porEntrada }}%; height:25px">
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoEntrada">
                 <h6>Caixa de Entrada</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#emAndamento">Em Andamento</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="45"
-                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porAndamento }}%; height:25px">
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoAndamento">
                 <h6>Em Andamento</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#minhasSolicitacoes">Minhas Solicitações</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="65"
-                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porMinha }}%; height:25px">
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoMinha">
                 <h6>Minhas Solicitações</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#aVencer">A Vencer</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85"
-                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porVencer }}%; height:25px">
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoVencer">
                 <h6>A Vencer</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#doDia">Solicitação do Dia</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
-                aria-valuemin="0" aria-valuemax="100" style="width: {{ $porDia }}%; height:25px">
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoDia">
                 <h6>Solicitação do Dia</h6>
             </div>
         </div><br>
@@ -411,6 +411,98 @@
     }
 </style>
 <script>
+    //Laço countEntrada
+    var numEntrada = document.getElementById('contEntrada');
+    var minEntrada = 0;
+    var maxEntrada = {{$countEntrada}};
+    var duracao = 1000;
+    var duracaoGrafico = 1000;
+    for (var i = minEntrada; i <= maxEntrada; i++) {
+        setTimeout((nr) => {
+            numEntrada.innerHTML = nr;
+        }, i * duracao / maxEntrada, i);
+    };
+    //Grafico
+    var graficoEntrada = document.getElementById('graficoEntrada');
+    var maxGraficoEntrada = {{$porEntrada}};
+    for (var i = minEntrada; i <= maxGraficoEntrada; i++) {
+        setTimeout((nr) => {
+            graficoEntrada.style.width = nr+'%';
+        }, i * duracaoGrafico / maxGraficoEntrada, i);
+    };
+
+    //Laço countAndamento
+    var numAndamento = document.getElementById('countAndamento');
+    var minAndamento = 0;
+    var maxAndamento = {{$countAndamento}};
+    for (var i = minAndamento; i <= maxAndamento; i++) {
+        setTimeout((nr) => {
+            numAndamento.innerHTML = nr;
+        }, i * duracao / maxAndamento, i);
+    };
+    //Grafico
+    var graficoAndamento = document.getElementById('graficoAndamento');
+    var maxgraficoAndamento = {{$porAndamento}};
+    for (var i = minEntrada; i <= maxgraficoAndamento; i++) {
+        setTimeout((nr) => {
+            graficoAndamento.style.width = nr+'%';
+        }, i * duracaoGrafico / maxgraficoAndamento, i);
+    };
+
+    //Laço countMinha
+    var numMinha = document.getElementById('countMinha');
+    var minMinha = 0;
+    var maxMinha = {{$countMinha}};
+    for (var i = minMinha; i <= maxMinha; i++) {
+        setTimeout((nr) => {
+            numMinha.innerHTML = nr;
+        }, i * duracao / maxMinha, i);
+    };
+    //Grafico
+    var graficoMinha = document.getElementById('graficoMinha');
+    var maxgraficoMinha = {{$porMinha}};
+    for (var i = minEntrada; i <= maxgraficoMinha; i++) {
+        setTimeout((nr) => {
+            graficoMinha.style.width = nr+'%';
+        }, i * duracaoGrafico / maxgraficoMinha, i);
+    };
+
+    //Laço countVencer
+    var numVencer = document.getElementById('countAVencer');
+    var minVencer = 0;
+    var maxVencer = {{$countAVencer}};
+    for (var i = minVencer; i <= maxVencer; i++) {
+        setTimeout((nr) => {
+            numVencer.innerHTML = nr;
+        }, i * duracao / maxVencer, i);
+    };
+    //Grafico
+    var graficoVencer = document.getElementById('graficoVencer');
+    var maxgraficoVencer = {{$porVencer}};
+    for (var i = minEntrada; i <= maxgraficoVencer; i++) {
+        setTimeout((nr) => {
+            graficoVencer.style.width = nr+'%';
+        }, i * duracaoGrafico / maxgraficoVencer, i);
+    };
+
+    //Laço countDia
+    var numDia = document.getElementById('countDoDia');
+    var minDia = 0;
+    var maxDia = {{$countDoDia}};
+    for (var i = minDia; i <= maxDia; i++) {
+        setTimeout((nr) => {
+            numDia.innerHTML = nr;
+        }, i * duracao / maxDia, i);
+    };
+    //Grafico
+    var graficoDia = document.getElementById('graficoDia');
+    var maxgraficoDia = {{$porDia}};
+    for (var i = minEntrada; i <= maxgraficoDia; i++) {
+        setTimeout((nr) => {
+            graficoDia.style.width = nr+'%';
+        }, i * duracaoGrafico / maxgraficoDia, i);
+    };
+
     function deleteForm(){
         Swal.fire({
             title: 'Atenção',
