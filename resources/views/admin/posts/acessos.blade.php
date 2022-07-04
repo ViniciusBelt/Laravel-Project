@@ -67,7 +67,7 @@
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                 'Cancelado',
-                'A solicitação não foi excluida.',
+                'A usuario não foi excluido.',
                 'error'
                 )
             }

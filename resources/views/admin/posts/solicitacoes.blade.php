@@ -112,7 +112,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                'A solcitação foi excluida!',
+                'A solicitação foi excluida!',
                 'A solicitação foi excluida com sucesso.',
                 'success'
                 )
