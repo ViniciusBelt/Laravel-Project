@@ -29,8 +29,9 @@ class Authenticate extends Controller
                 Auth::login($user);
                 return redirect(route('index'))->with('alert', 'Usuario logado com sucesso');
             }
-            return redirect(route('index'))->with('alert', 'Usuario não cadastrado');;
+            return redirect(route('pgLogin'))->with('alert', 'Usuario ou senha incorretos');
         } catch (\Throwable $th) {
+            return redirect(route('pgLogin'))->with('alert', 'Usuario ou senha incorretos');
         }
     }
 
