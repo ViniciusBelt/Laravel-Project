@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50">
-                                        <a href="{{route('login')}}">Fazer login</a>
+                                        <a href="{{route('pgLogin')}}">Fazer login</a>
                                     </div>
                                 </div>
                             </form>
@@ -66,23 +66,77 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        var icon = '{{Session::get('icon')}}';
+        if(exist){
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+    
+            Toast.fire({
+            icon: icon,
+            title: msg
+            })
+        }
         function submitBtn(){
-            let password = document.getElementById('password');
-            let confirmPassword = document.getElementById('confirm-password');
-
-            if (password.value != confirmPassword.value) {
-                Swal.fire({
-                    title: 'Opss',
-                    text: 'Senhas divergentes',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
+            let email = document.getElementById('mail');
+            var emailFilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!emailFilter.test(email.value)) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
                 })
-                confirmPassword.reportValidity();
+            
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Formato de e-mail inválido!'
+                })
+                email.focus();
                 return false;
-            } else {
-                document.getElementById("register-form").submit();
-                confirmPassword.setCustomValidity("");
-                return true;
+            }else{
+                let password = document.getElementById('password');
+                let confirmPassword = document.getElementById('confirm-password');
+                if (password.value != confirmPassword.value) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+            
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Senhas divergentes!'
+                    })
+                    confirmPassword.focus();
+                    confirmPassword.reportValidity();
+                    return false;
+                } else {
+                    document.getElementById("register-form").submit();
+                    confirmPassword.setCustomValidity("");
+                    return true;
+                }
             }
             // verificar também quando o campo for modificado, para que a mensagem suma quando as senhas forem iguais
             confirmPassword.addEventListener('input', validarSenha);
