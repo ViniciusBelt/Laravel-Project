@@ -18,6 +18,12 @@ Route::get('/login', function () {
     return view('login');
 })->name('pgLogin');
 
+Route::get('/objetivo', [PostController::class, 'objetivo'])->name('objetivo');
+
+Route::get('/editObjetivo', [PostController::class, 'editObjetivo'])->name('editObjetivo');
+
+Route::post('/updateObjetivo/{id}', [PostController::class, 'updateObjetivo']);
+
 Route::get('/loginFunc', 'App\Http\Controllers\Authenticate@login')->name('login');
 
 Route::get('/logout', 'App\Http\Controllers\Authenticate@logout')->name('logout');
