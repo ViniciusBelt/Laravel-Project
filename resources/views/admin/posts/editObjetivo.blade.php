@@ -1,13 +1,13 @@
 @include('layouts.app')
-<form action="" method="post" id="formEdit">
+<form action="/updateObjetivo" method="post" id="formEdit">
     @csrf
     <div class="form-group">
         <label for="title" style="float: left;">Titulo</label>
-        <input type="text" class="form-control" id="titulo" name="titulo">
+        <input type="text" class="form-control" id="titulo" name="titulo" value="@if($objetivo){{$objetivo->titulo}}@endif">
     </div>
     <div class="form-group">
         <label for="title" style="float: left;">Descrição</label>
-        <input type="text" class="form-control" id="descricao" name="descricao">
+        <textarea class="form-control" id="descricao" name="descricao" rows="10">@if($objetivo){{$objetivo->descricao}}@endif</textarea>
     </div>
     <input type="button" class="btn btn-primary" value="Salvar Alterações" onclick="editForm()">
 </form>

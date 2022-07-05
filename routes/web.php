@@ -22,7 +22,7 @@ Route::get('/objetivo', [PostController::class, 'objetivo'])->name('objetivo');
 
 Route::get('/editObjetivo', [PostController::class, 'editObjetivo'])->name('editObjetivo');
 
-Route::post('/updateObjetivo/{id}', [PostController::class, 'updateObjetivo']);
+Route::post('/updateObjetivo', [PostController::class, 'updateObjetivo']);
 
 Route::get('/loginFunc', 'App\Http\Controllers\Authenticate@login')->name('login');
 

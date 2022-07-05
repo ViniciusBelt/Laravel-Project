@@ -230,9 +230,19 @@ class PostController extends Controller
     public function updateObjetivo(Request $request)
     {
         if(Auth::user() && Auth::user()->id_acesso === 1){
-            Objetivo::findOrFail($request->id)->update($request->all());
-    
-            return redirect(url('/objetivo'))->with('alert', 'Objetivo Editado com Sucesso!');
+            $selectObjetivo = Objetivo::get()->count();
+            if($selectObjetivo == 0){
+                $event = new Objetivo;
+                $event->titulo    = $request->titulo;
+                $event->descricao = $request->descricao;
+                $event->save();
+
+                return redirect(url('/objetivo'))->with('alert', 'Objetivo Editado com Sucesso!');
+            }else{
+                Objetivo::findOrFail('1')->update($request->all());
+                
+                return redirect(url('/objetivo'))->with('alert', 'Objetivo Editado com Sucesso!');
+            }
         }else{
             return redirect('login');
         }
