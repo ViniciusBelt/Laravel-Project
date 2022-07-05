@@ -148,7 +148,7 @@ class PostController extends Controller
             $usuarios = User::get()->sortByDesc('id');
             return view('admin.posts.acessos', compact('usuarios'));
         }else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 
@@ -159,7 +159,7 @@ class PostController extends Controller
             User::findOrFail($id)->delete();
             return redirect()->back()->with('msg', 'Usuario Excluido com Sucesso!');
         }else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 
@@ -171,7 +171,7 @@ class PostController extends Controller
     
             return view('admin.posts.editUser', ['event' => $event], compact('acesso'));
         }else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 
@@ -182,7 +182,7 @@ class PostController extends Controller
     
             return redirect(url('/acessos'))->with('alert', 'Usuario Editado com Sucesso!');
         }else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 
@@ -198,7 +198,7 @@ class PostController extends Controller
     
             return view('admin.posts.editObjetivo', compact('objetivo'));
         }else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 
@@ -219,7 +219,7 @@ class PostController extends Controller
                 return redirect(url('/objetivo'))->with('alert', 'Objetivo Editado com Sucesso!');
             }
         }else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 }
