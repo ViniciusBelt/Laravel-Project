@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Acesso;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Etapas;
+use App\Models\Objetivo;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -205,6 +206,43 @@ class PostController extends Controller
             User::findOrFail($request->id)->update($request->all());
     
             return redirect(url('/acessos'))->with('alert', 'Usuario Editado com Sucesso!');
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function objetivo(){
+        $objetivo = Objetivo::get()->first();
+        return view('admin.posts.objetivo', compact('objetivo'));
+    }
+
+    public function editObjetivo()
+    {
+        if(Auth::user() && Auth::user()->id_acesso === 1){
+            $objetivo = Objetivo::get()->first();
+    
+            return view('admin.posts.editObjetivo', compact('objetivo'));
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function updateObjetivo(Request $request)
+    {
+        if(Auth::user() && Auth::user()->id_acesso === 1){
+            $selectObjetivo = Objetivo::get()->count();
+            if($selectObjetivo == 0){
+                $event = new Objetivo;
+                $event->titulo    = $request->titulo;
+                $event->descricao = $request->descricao;
+                $event->save();
+
+                return redirect(url('/objetivo'))->with('alert', 'Objetivo Editado com Sucesso!');
+            }else{
+                Objetivo::findOrFail('1')->update($request->all());
+                
+                return redirect(url('/objetivo'))->with('alert', 'Objetivo Editado com Sucesso!');
+            }
         }else{
             return redirect('login');
         }

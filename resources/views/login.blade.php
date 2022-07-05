@@ -7,6 +7,8 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
         <section class="ftco-section">
@@ -52,13 +54,14 @@
     </body>
     <script>
         var msg = '{{Session::get('alert')}}';
+        var icon = '{{Session::get('icon')}}';
         var exist = '{{Session::has('alert')}}';
         if(exist){
             const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 2000,
+            timer: 3500,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -67,7 +70,7 @@
             })
     
             Toast.fire({
-            icon: 'alert',
+            icon: icon,
             title: msg
             })
         }

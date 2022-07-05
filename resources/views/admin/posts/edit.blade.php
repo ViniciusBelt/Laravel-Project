@@ -50,7 +50,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                'A solcitação foi editada!',
+                'A solicitação foi editada!',
                 'A solicitação foi editada com sucesso.',
                 'success'
                 )

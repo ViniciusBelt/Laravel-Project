@@ -53,6 +53,15 @@ CREATE TABLE acesso (
     PRIMARY KEY (id)
 );
 
+----------TABELA OBJETIVO----------
+
+CREATE TABLE objetivo (
+    id int NOT NULL AUTO_INCREMENT,
+    titulo varchar(255) NOT NULL,
+    descricao varchar(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
 ----------CARGA ACESSO----------
 
 INSERT

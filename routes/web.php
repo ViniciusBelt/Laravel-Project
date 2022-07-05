@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index'])->name('index');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
 Route::get('/registrar', function () {
     return view('registrar');
 })->name('registrar');
@@ -21,6 +17,12 @@ Route::get('/registrando', 'App\Http\Controllers\Authenticate@criarUsuario')->na
 Route::get('/login', function () {
     return view('login');
 })->name('pgLogin');
+
+Route::get('/objetivo', [PostController::class, 'objetivo'])->name('objetivo');
+
+Route::get('/editObjetivo', [PostController::class, 'editObjetivo'])->name('editObjetivo');
+
+Route::post('/updateObjetivo', [PostController::class, 'updateObjetivo']);
 
 Route::get('/loginFunc', 'App\Http\Controllers\Authenticate@login')->name('login');
 
