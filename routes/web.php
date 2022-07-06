@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\{
     PostController,
-    CreateUserController
+    ChatController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +33,5 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('/excluirUser/{id}', [PostController::class, 'destroyUser']);
     Route::get('/editUser/{id}', [PostController::class, 'editUser']);
     Route::post('/updateUser/{id}', [PostController::class, 'updateUser']);
+    Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
 });

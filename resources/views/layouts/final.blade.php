@@ -100,6 +100,11 @@
 </html>
 <script>
     var msg = '{{Session::get('alert')}}';
+    if({{Session::has('icon')}}){
+        var icon = '{{Session::get('icon')}}';
+    }else{
+        var icon = 'success';
+    }
     var exist = '{{Session::has('alert')}}';
     if(exist){
         const Toast = Swal.mixin({
@@ -115,7 +120,7 @@
         })
 
         Toast.fire({
-        icon: 'success',
+        icon: icon,
         title: msg
         })
     }
