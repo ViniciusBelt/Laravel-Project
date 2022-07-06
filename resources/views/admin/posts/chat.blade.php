@@ -6,49 +6,28 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Buscar...">
+                    <select name="usuarios" id="usuarios" class="form-control select2">
+                        <option value="" disabled selected>Buscar...</option>
+                        @foreach ($usuarios as $users)
+                        <option value="{{$users->id}}">{{$users->nome}}</option>   
+                        @endforeach
+                    </select>
                 </div>
                 <ul class="list-unstyled chat-list mt-2 mb-0">
+                    @foreach ($usuarios as $users)
                     <li class="clearfix">
                         <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="avatar">
                         <div class="about">
-                            <div class="name">Usuario</div>
+                            <div class="name">{{$users->nome}}</div>
                             <div class="status"> <i class="fa fa-circle offline"></i> Status </div>                                            
                         </div>
                     </li>
-                    <li class="clearfix active">
-                        <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Usuario</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> Status </div>
-                        </div>
-                    </li>
+                    @endforeach
                     <li class="clearfix">
                         <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="avatar">
                         <div class="about">
                             <div class="name">Usuario</div>
                             <div class="status"> <i class="fa fa-circle online"></i> Status </div>
-                        </div>
-                    </li>                                    
-                    <li class="clearfix">
-                        <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Usuario</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> Status </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Usuario</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> Status </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Usuario</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> Status </div>
                         </div>
                     </li>
                 </ul>
@@ -72,24 +51,14 @@
                 </div>
                 <div class="chat-history">
                     <ul class="m-b-0">
+                        @foreach ($mensagem as $msg)
                         <li class="clearfix">
-                            <div class="message-data text-right">
-                                <span class="message-data-time">Data</span>
+                            <div class="message-data @if($msg->id_remetente == Auth::user()->id) text-right @endif">
+                                <span class="message-data-time"><br>{{date_format(date_create($msg->data_criacao), 'H:i:s')}}<br>{{date_format(date_create($msg->data_criacao), 'd/m/Y')}}</span>
                             </div>
-                            <div class="message other-message float-right"> Mensagem </div>
+                            <div class="message @if($msg->id_remetente == Auth::user()->id) my-message float-right @else other-message @endif"> {{$msg->mensagem}} </div>
                         </li>
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">Data</span>
-                            </div>
-                            <div class="message my-message">Mensagem</div>                                    
-                        </li>                               
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">Data</span>
-                            </div>
-                            <div class="message my-message">Mensagem</div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="chat-message clearfix">

@@ -62,6 +62,27 @@ CREATE TABLE objetivo (
     PRIMARY KEY (id)
 );
 
+----------TABELA CHAT----------
+
+CREATE TABLE chat (
+    id int NOT NULL AUTO_INCREMENT,
+    user_1 int NOT NULL,
+    user_2 int NOT NULL,
+    data_criacao DATE,
+    PRIMARY KEY (id)
+);
+
+----------TABELA CHAT-MENSAGEM----------
+
+CREATE TABLE chat_mensagem (
+    id int NOT NULL AUTO_INCREMENT,
+    id_chat int NOT NULL,
+    id_remetente int NOT NULL,
+    mensagem varchar(255) NOT NULL,
+    data_criacao DATE,
+    PRIMARY KEY (id)
+);
+
 ----------CARGA ACESSO----------
 
 INSERT
@@ -101,3 +122,35 @@ ADD FOREIGN KEY
 	(id_acesso) 
 REFERENCES 
 	acesso(id);
+
+--chat--
+
+ALTER TABLE
+	chat 
+ADD FOREIGN KEY
+	(user_1) 
+REFERENCES 
+	users(id);
+
+ALTER TABLE
+	chat 
+ADD FOREIGN KEY
+	(user_2) 
+REFERENCES 
+	users(id);
+
+--chat_mensagem--
+
+ALTER TABLE
+	chat_mensagem 
+ADD FOREIGN KEY
+	(id_chat) 
+REFERENCES 
+	chat(id);
+
+ALTER TABLE
+	chat_mensagem 
+ADD FOREIGN KEY
+	(id_remetente) 
+REFERENCES 
+    users(id);
