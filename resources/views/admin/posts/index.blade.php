@@ -84,7 +84,7 @@
 <div class="card col align-self-center" style="text-align: center; margin-top: 1rem">
     <div class="card-header">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <h4>Solicitação por Etapa</h4>
+          <h4>Evolução de Solicitações</h4>
         </button>
     </div>
     <div class="card-body">
@@ -92,35 +92,35 @@
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25"
                 aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoEntrada">
-                <h6>Caixa de Entrada</h6>
+                <h6>{{number_format($porEntrada, 0, '.', '')}}%</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#emAndamento">Em Andamento</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="45"
                 aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoAndamento">
-                <h6>Em Andamento</h6>
+                <h6>{{number_format($porAndamento, 0, '.', '')}}%</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#minhasSolicitacoes">Minhas Solicitações</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="65"
                 aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoMinha">
-                <h6>Minhas Solicitações</h6>
+                <h6>{{number_format($porMinha, 0, '.', '')}}%</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#aVencer">A Vencer</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85"
                 aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoVencer">
-                <h6>A Vencer</h6>
+                <h6>{{number_format($porVencer, 0, '.', '')}}%</h6>
             </div>
         </div><br>
         <h5><a href="#" data-toggle="modal" data-target="#doDia">Solicitação do Dia</a></h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
                 aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:25px" id="graficoDia">
-                <h6>Solicitação do Dia</h6>
+                <h6>{{number_format($porDia, 0, '.', '')}}%</h6>
             </div>
         </div><br>
     </div>
