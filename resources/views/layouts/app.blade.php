@@ -101,7 +101,6 @@
                   </p>
                 </a>
               </li>
-              @if(Auth::user()->id_acesso === 1)
               <li class="nav-item">
                 <a href="{{ route('chat') }}" class="nav-link">
                   <i class="nav-icon fas fa-comments"></i>
@@ -110,6 +109,7 @@
                   </p>
                 </a>
               </li>
+              @if(Auth::user()->id_acesso === 1)
               <li class="nav-item">
                 <a href="{{ url('/acessos') }}" class="nav-link">
                   <i class="nav-icon fas fa-lock"></i>

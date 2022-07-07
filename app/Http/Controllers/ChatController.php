@@ -12,14 +12,14 @@ class ChatController extends Controller
 {
     public function chat()
     {
-        if(Auth::user()->id_acesso === 1){
+        try {
             $usuarios = User::select('nome', 'id', 'id_acesso')->where('id', '<>', Auth::user()->id)->get();
             $chat = Chat::where('user_1', Auth::user()->id)->orWhere('user_2', Auth::user()->id)->get();
             $mensagem = ChatMensagem::get();
             $chatAtual = null;
             return view('admin.posts.chat', compact('usuarios', 'chat', 'mensagem', 'chatAtual'));
-        }else{
-            return redirect(route('index'))->with('alert', 'Você não tem acesso a esta página!')->with('icon', 'error');
+        } catch (\Throwable $th) {
+            return redirect(route('index'))->with('alert', 'Ocorreu um erro ao acessar esta página!')->with('icon', 'error');
         }
     }
 

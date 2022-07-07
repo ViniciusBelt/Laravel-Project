@@ -79,7 +79,7 @@ CREATE TABLE chat_mensagem (
     id_chat int NOT NULL,
     id_remetente int NOT NULL,
     mensagem varchar(255) NOT NULL,
-    data_criacao DATE,
+    data_criacao DATETIME,
     PRIMARY KEY (id)
 );
 
