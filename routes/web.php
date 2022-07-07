@@ -34,4 +34,6 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/editUser/{id}', [PostController::class, 'editUser']);
     Route::post('/updateUser/{id}', [PostController::class, 'updateUser']);
     Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
+    Route::get('/send', [ChatController::class, 'enviaMsg'])->name('send');
+    Route::get('/setChat', [ChatController::class, 'setChat'])->name('setChat');
 });
