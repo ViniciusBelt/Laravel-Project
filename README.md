@@ -8,10 +8,6 @@ php artisan serve
 
 php artisan migrate:refresh --seed
 
-##  Tabelas e carga sql
-
-Query em database\migrations
-
 ## Requisitos
 
 - PHP (Descomentar pdo_mysql).
