@@ -93,6 +93,22 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ url('/objetivo') }}" class="nav-link">
+                  <i class="nav-icon fas fa-question"></i>
+                  <p>
+                    Objetivo
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('chat') }}" class="nav-link">
+                  <i class="nav-icon fas fa-comments"></i>
+                  <p>
+                    Chat
+                  </p>
+                </a>
+              </li>
               @if(Auth::user()->id_acesso === 1)
               <li class="nav-item">
                 <a href="{{ url('/acessos') }}" class="nav-link">
@@ -103,14 +119,6 @@
                 </a>
               </li>
               @endif
-              <li class="nav-item">
-                <a href="{{ url('/objetivo') }}" class="nav-link">
-                  <i class="nav-icon fas fa-question"></i>
-                  <p>
-                    Objetivo
-                  </p>
-                </a>
-              </li>
             </ul>
           </nav>
           <!-- /.sidebar-menu -->

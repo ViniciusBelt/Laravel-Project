@@ -6,9 +6,7 @@ docker-compose up --build
 
 php artisan serve
 
-##  Tabelas e carga sql
-
-Query em database\migrations
+php artisan migrate:refresh --seed
 
 ## Requisitos
 
