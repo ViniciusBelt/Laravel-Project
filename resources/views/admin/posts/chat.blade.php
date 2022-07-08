@@ -51,7 +51,7 @@
                 <div class="chat-history">
                     <ul class="m-b-0">
                         @foreach ($mensagem as $msg)
-                        <li class="clearfix" @if($msg->id == $lastMsg->id) id="last" @endif>
+                        <li class="clearfix">
                             <div class="message-data @if($msg->id_remetente == Auth::user()->id) text-right @endif">
                                 <span class="message-data-time"><br>{{date_format(date_create($msg->data_criacao), 'H:i')}}<br>{{date_format(date_create($msg->data_criacao), 'd/m/Y')}}</span>
                             </div>
@@ -355,5 +355,8 @@
         }
     }
 </style>
-</body>
-</html>
+<script>
+    $(".chat-history").animate({
+        scrollTop: $('.chat-history').get(0).scrollHeight
+    }, 1);
+</script>

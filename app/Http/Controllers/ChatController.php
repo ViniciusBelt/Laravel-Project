@@ -41,8 +41,7 @@ class ChatController extends Controller
                 return redirect(route('chat'))->with('alert', 'Novo chat criado!')->with('icon', 'success');
             }else{
                 $mensagem = ChatMensagem::where('id_chat', $chatAtual->id)->get();
-                $lastMsg = ChatMensagem::where('id_chat', $chatAtual->id)->orderBy('id', 'DESC')->limit(1)->first();
-                return view('admin.posts.chat', compact('chatAtual', 'usuarios', 'mensagem', 'userChat', 'lastMsg'));
+                return view('admin.posts.chat', compact('chatAtual', 'usuarios', 'mensagem', 'userChat'));
             }
         } catch (\Throwable $th) {
             return redirect(route('index'))->with('alert', 'Erro ao abrir o chat, verifique sua conexão')->with('icon', 'error');

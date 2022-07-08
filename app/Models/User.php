@@ -11,6 +11,9 @@ class User extends Authenticatable
     use HasFactory;
     public $timestamps = false;
     protected $table = 'users';
+    protected $fillable = [
+        'usuario', 'senha'
+    ];
 
     protected $guarded = [];
     public function caixaEntrada(){
