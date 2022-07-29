@@ -3,6 +3,8 @@
 ## Instalação
 
 docker-compose up --build
+<br>
+![db](https://github.com/ViniciusBelt/imgs/blob/master/db.png?raw=true)
 
 php artisan serve
 
